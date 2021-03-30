@@ -1,14 +1,117 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.appearingDiv {
+  transition: opacity 0.5s ease;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.contentWrapper {
+  position: absolute;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.ease {
+  -webkit-transition: left 0.3s ease, right 0.3s ease, top 0.3s ease,
+    bottom 0.3s ease, transform 0.3s ease;
+  -moz-transition: left 0.3s ease, right 0.3s ease, top 0.3s ease,
+    bottom 0.3s ease, transform 0.3s ease;
+  -o-transition: left 0.3s ease, right 0.3s ease, top 0.3s ease,
+    bottom 0.3s ease, transform 0.3s ease;
+  transition: left 0.3s ease, right 0.3s ease, top 0.3s ease, bottom 0.3s ease,
+    transform 0.3s ease;
+}
+
+.bouncy {
+  -webkit-transition: transform 0.4s cubic-bezier(0.47, 1.64, 0.41, 0.8),
+    left 0.4s cubic-bezier(0.47, 1.64, 0.41, 0.8),
+    right 0.4s cubic-bezier(0.47, 1.64, 0.41, 0.8),
+    top 0.4s cubic-bezier(0.47, 1.64, 0.41, 0.8),
+    bottom 0.4s cubic-bezier(0.47, 1.64, 0.41, 0.8);
+  -moz-transition: transform 0.4s cubic-bezier(0.47, 1.64, 0.41, 0.8),
+    left 0.4s cubic-bezier(0.47, 1.64, 0.41, 0.8),
+    right 0.4s cubic-bezier(0.47, 1.64, 0.41, 0.8),
+    top 0.4s cubic-bezier(0.47, 1.64, 0.41, 0.8),
+    bottom 0.4s cubic-bezier(0.47, 1.64, 0.41, 0.8);
+  -o-transition: transform 0.4s cubic-bezier(0.47, 1.64, 0.41, 0.8),
+    left 0.4s cubic-bezier(0.47, 1.64, 0.41, 0.8),
+    right 0.4s cubic-bezier(0.47, 1.64, 0.41, 0.8),
+    top 0.4s cubic-bezier(0.47, 1.64, 0.41, 0.8),
+    bottom 0.4s cubic-bezier(0.47, 1.64, 0.41, 0.8);
+  transition: transform 0.4s cubic-bezier(0.47, 1.64, 0.41, 0.8),
+    left 0.4s cubic-bezier(0.47, 1.64, 0.41, 0.8),
+    right 0.4s cubic-bezier(0.47, 1.64, 0.41, 0.8),
+    top 0.4s cubic-bezier(0.47, 1.64, 0.41, 0.8),
+    bottom 0.4s cubic-bezier(0.47, 1.64, 0.41, 0.8);
+}
+
+.smooth {
+  -webkit-transition: transform 0.4s cubic-bezier(0, 0.55, 0.45, 1),
+    left 0.4s cubic-bezier(0, 0.55, 0.45, 1),
+    right 0.4s cubic-bezier(0, 0.55, 0.45, 1),
+    top 0.4s cubic-bezier(0, 0.55, 0.45, 1),
+    bottom 0.4s cubic-bezier(0, 0.55, 0.45, 1);
+  -moz-transition: transform 0.4s cubic-bezier(0, 0.55, 0.45, 1),
+    left 0.4s cubic-bezier(0, 0.55, 0.45, 1),
+    right 0.4s cubic-bezier(0, 0.55, 0.45, 1),
+    top 0.4s cubic-bezier(0, 0.55, 0.45, 1),
+    bottom 0.4s cubic-bezier(0, 0.55, 0.45, 1);
+  -o-transition: transform 0.4s cubic-bezier(0, 0.55, 0.45, 1),
+    left 0.4s cubic-bezier(0, 0.55, 0.45, 1),
+    right 0.4s cubic-bezier(0, 0.55, 0.45, 1),
+    top 0.4s cubic-bezier(0, 0.55, 0.45, 1),
+    bottom 0.4s cubic-bezier(0, 0.55, 0.45, 1);
+  transition: transform 0.4s cubic-bezier(0, 0.55, 0.45, 1),
+    left 0.4s cubic-bezier(0, 0.55, 0.45, 1),
+    right 0.4s cubic-bezier(0, 0.55, 0.45, 1),
+    top 0.4s cubic-bezier(0, 0.55, 0.45, 1),
+    bottom 0.4s cubic-bezier(0, 0.55, 0.45, 1);
+}
+
+.fade {
+  -webkit-transition: opacity 0.3s ease;
+  -moz-transition: opacity 0.3s ease;
+  -o-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
+}
+
+.arrow {
+  border: solid black;
+  border-width: 0 6px 6px 0;
+  display: inline-block;
+  padding: 6px;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+.bounce {
+  -moz-animation: bounce 2s infinite;
+  -webkit-animation: bounce 2s infinite;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
 }
