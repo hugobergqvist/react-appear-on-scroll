@@ -186,6 +186,7 @@ const App = () => {
         each item, making them appear in sequence
       </p>
       <AppearSequentialContainer
+        delayIncrement={100}
         style={{
           backgroundColor: '#480ca8',
           padding: '10px',

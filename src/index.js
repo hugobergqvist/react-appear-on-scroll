@@ -106,7 +106,11 @@ export const AppearingContainer = ({
   )
 }
 
-export const AppearSequentialContainer = ({ children, style }) => {
+export const AppearSequentialContainer = ({
+  children,
+  style,
+  delayIncrement = 100
+}) => {
   const [content, setContent] = useState(null)
 
   useEffect(() => {
@@ -121,7 +125,7 @@ export const AppearSequentialContainer = ({ children, style }) => {
             key: `appearingContainer-${index}`
           })
         )
-        delay += 100
+        delay += delayIncrement
       })
     } else {
       tempContent.push(
@@ -165,4 +169,10 @@ AppearingContainer.propTypes = {
     'scale'
   ]),
   containerPadding: PropTypes.number
+}
+
+AppearSequentialContainer.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  style: PropTypes.object,
+  delayIncrement: PropTypes.number
 }

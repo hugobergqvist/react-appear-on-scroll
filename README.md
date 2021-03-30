@@ -86,23 +86,24 @@ class Example2 extends Component {
 
 ### AppearingContainer
 
-| Prop             |     Type     |                                 Value                                 |
-| ---------------- | :----------: | :-------------------------------------------------------------------: |
-| parentStyling    | type: object |        Custom styling which is applied to the parent container        |
-| wrapperStyling   | type: object |        Custom styling which is applied to the content wrapper         |
-| delay            | type: number |     Adds transition-delay, utilized by AppearSequentialContainer      |
-| transitionType   | type: string |                  One of 'ease', 'smooth' or 'bouncy'                  |
-| fading           |  type: bool  |           if true transitions opacity from 0 to 1 over 0.5s           |
-| stayVisible      |  type: bool  |           if true transitions once and is then left visible           |
-| animationType    | type: string |  One of 'fromLeft', 'fromRight', 'fromTop', 'fromBottom' or 'scale'   |
-| containerPadding | type: number | Adds padding to the parent container, necessary if box-shadow is used |
+| Prop             |   Type: Default    |                                 Value                                 |
+| ---------------- | :----------------: | :-------------------------------------------------------------------: |
+| parentStyling    |    object: none    |        Custom styling which is applied to the parent container        |
+| wrapperStyling   |    object: none    |        Custom styling which is applied to the content wrapper         |
+| delay            |    number: none    |     Adds transition-delay, utilized by AppearSequentialContainer      |
+| transitionType   |   string: 'ease'   |                  One of 'ease', 'smooth' or 'bouncy'                  |
+| fading           |    bool: false     |           if true transitions opacity from 0 to 1 over 0.5s           |
+| stayVisible      |    bool: false     |           if true transitions once and is then left visible           |
+| animationType    | string: 'fromLeft' |  One of 'fromLeft', 'fromRight', 'fromTop', 'fromBottom' or 'scale'   |
+| containerPadding |     number: 15     | Adds padding to the parent container, necessary if box-shadow is used |
 
 ### AppearSequentialContainer
 
-| Prop     |                Type                |                          Value                          |
-| -------- | :--------------------------------: | :-----------------------------------------------------: |
-| children | type: element or array of elements |            One or more <AppearingContainer/>            |
-| style    |            type: object            | Custom styling which is applied to the parent container |
+| Prop           |           Type, default            |                          Value                          |
+| -------------- | :--------------------------------: | :-----------------------------------------------------: |
+| children       | element or array of elements: none |            One or more <AppearingContainer/>            |
+| style          |            object: none            | Custom styling which is applied to the parent container |
+| delayIncrement |            number: 100             | Number of milliseconds of delay between each transition |
 
 ## License
 
