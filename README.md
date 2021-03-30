@@ -10,6 +10,10 @@
 npm install --save react-appear-on-scroll
 ```
 
+## Example
+
+Examples can be seen [here](https://hugobergqvist.github.io/react-appear-on-scroll/).
+
 ## Requirements
 
 `<AppearingContainer/>` requires a single child element which has both height and width set.
