@@ -5,6 +5,7 @@
   "author": "hugobergqvist",
   "license": "MIT",
   "repository": "hugobergqvist/react-appear-on-scroll",
+  "keywords": ["transition", "scroll", "animation", "visible", "appear"],
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
