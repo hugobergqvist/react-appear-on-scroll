@@ -11,7 +11,7 @@ export const AppearingContainer = ({
   fading = false,
   stayVisible = false,
   animationType = 'fromLeft',
-  containerMargin = 15
+  containerPadding = 15
 }) => {
   const appearingDiv = useRef()
 
@@ -20,8 +20,8 @@ export const AppearingContainer = ({
   let contentWidth = parseInt(children.props.style.width.replace('px', ''))
   let contentHeight = parseInt(children.props.style.height.replace('px', ''))
 
-  let wrapperWidth = contentWidth + containerMargin
-  let wrapperHeight = contentHeight + containerMargin
+  let wrapperWidth = contentWidth + containerPadding
+  let wrapperHeight = contentHeight + containerPadding
 
   useEffect(() => {
     window.addEventListener('scroll', isVisible)
@@ -72,25 +72,25 @@ export const AppearingContainer = ({
             animationType === 'fromLeft'
               ? visible
                 ? '0px'
-                : `-${contentWidth + containerMargin}px`
+                : `-${contentWidth + containerPadding}px`
               : 'auto',
           right:
             animationType === 'fromRight'
               ? visible
                 ? '0px'
-                : `-${contentWidth + containerMargin}px`
+                : `-${contentWidth + containerPadding}px`
               : 'auto',
           top:
             animationType === 'fromTop'
               ? visible
                 ? '0px'
-                : `-${contentHeight + containerMargin}px`
+                : `-${contentHeight + containerPadding}px`
               : 'auto',
           bottom:
             animationType === 'fromBottom'
               ? visible
                 ? '0px'
-                : `-${contentHeight + containerMargin}px`
+                : `-${contentHeight + containerPadding}px`
               : 'auto',
           transform:
             animationType === 'scale'
@@ -164,5 +164,5 @@ AppearingContainer.propTypes = {
     'fromBottom',
     'scale'
   ]),
-  containerMargin: PropTypes.number
+  containerPadding: PropTypes.number
 }

@@ -180,9 +180,10 @@ const App = () => {
           </div>
         </AppearingContainer>
       </span>
-      <p>
-        This is a 'AppearSequentialContainer' which adds a longer and longer
-        transition delay to each item, making them appear in sequence
+      <p style={{ maxWidth: '800px' }}>
+        This is a 'AppearSequentialContainer' wrapping three
+        'AppearingContainer' which adds a longer and longer transition delay to
+        each item, making them appear in sequence
       </p>
       <AppearSequentialContainer
         style={{
