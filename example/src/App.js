@@ -50,10 +50,13 @@ const App = () => {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'flex-end',
-          alignItems: 'center'
+          alignItems: 'center',
+          background: '#ff00cc',
+          background: '-webkit-linear-gradient(to right, #333399, #ff00cc)',
+          background: 'linear-gradient(to right, #333399, #ff00cc)'
         }}
       >
-        <p style={{ fontSize: '14pt', marginBottom: '10px' }}>
+        <p style={{ fontSize: '24pt', marginBottom: '10px', color: 'white' }}>
           Scroll down to make the containers appear!
         </p>
         <div className='bounce'>

@@ -99,9 +99,9 @@ class Example2 extends Component {
 
 ### AppearSequentialContainer
 
-| Prop           |           Type, default            |                          Value                          |
+| Prop           |           Type: Default            |                          Value                          |
 | -------------- | :--------------------------------: | :-----------------------------------------------------: |
-| children       | element or array of elements: none |            One or more <AppearingContainer/>            |
+| children       | element or array of elements: none |            One or more 'AppearingContainer'             |
 | style          |            object: none            | Custom styling which is applied to the parent container |
 | delayIncrement |            number: 100             | Number of milliseconds of delay between each transition |
 
