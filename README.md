@@ -10,6 +10,10 @@
 npm install --save react-appear-on-scroll
 ```
 
+## Requirements
+
+`<AppearingContainer/>` requires a single child element which has both height and width set.
+
 ## Usage
 
 ```jsx
@@ -92,6 +96,13 @@ class Example2 extends Component {
 | stayVisible      |  type: bool  |           if true transitions once and is then left visible           |
 | animationType    | type: string |  One of 'fromLeft', 'fromRight', 'fromTop', 'fromBottom' or 'scale'   |
 | containerPadding | type: number | Adds padding to the parent container, necessary if box-shadow is used |
+
+### AppearSequentialContainer
+
+| Prop     |                Type                |                          Value                          |
+| -------- | :--------------------------------: | :-----------------------------------------------------: |
+| children | type: element or array of elements |            One or more <AppearingContainer/>            |
+| style    |            type: object            | Custom styling which is applied to the parent container |
 
 ## License
 
