@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
-import './styles.module.css'
+import styles from './styles.module.css'
 
 export const AppearingContainer = ({
   children,
   parentStyling,
   wrapperStyling,
-  delay = 0,
   transitionType = 'ease',
+  animationType = 'fromLeft',
   fading = false,
   stayVisible = false,
-  animationType = 'fromLeft',
+  delay = 0,
   containerPadding = 15
 }) => {
   const appearingDiv = useRef()
@@ -31,10 +31,10 @@ export const AppearingContainer = ({
 
   const isVisible = () => {
     const rect = appearingDiv.current.getBoundingClientRect()
+
     if (
-      rect.top >= -rect.height / 2 &&
       rect.bottom <=
-        (window.innerHeight || document.documentElement.clientHeight)
+      (window.innerHeight || document.documentElement.clientHeight)
     ) {
       setVisible(true)
     } else if (!stayVisible) {
@@ -45,9 +45,10 @@ export const AppearingContainer = ({
   return (
     <div
       ref={appearingDiv}
-      className={`appearingDiv  ${fading && 'fade'}`}
+      className={`${styles.appearingDiv} `}
       style={{
         ...parentStyling,
+
         overflow: animationType === 'scale' ? '' : 'hidden',
         opacity: fading ? (visible ? 1 : 0) : 1,
         width: parentStyling
@@ -63,9 +64,10 @@ export const AppearingContainer = ({
       }}
     >
       <div
-        className={`contentWrapper ${transitionType}`}
+        className={`${styles['contentWrapper']} ${styles[transitionType]} `}
         style={{
           ...wrapperStyling,
+
           transitionDelay: `${delay}ms`,
 
           left:
