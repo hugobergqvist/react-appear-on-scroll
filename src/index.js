@@ -47,8 +47,8 @@ export const AppearingContainer = ({
   }
 
   useEffect(() => {
+    isVisible()
     window.addEventListener('scroll', isVisible)
-
     return () => window.removeEventListener('scroll', isVisible)
   }, [])
 
@@ -56,8 +56,9 @@ export const AppearingContainer = ({
     const rect = appearingRef.current.getBoundingClientRect()
 
     if (
+      rect.top >= -rect.height &&
       rect.bottom <=
-      (window.innerHeight || document.documentElement.clientHeight)
+        (window.innerHeight || document.documentElement.clientHeight)
     ) {
       setVisible(true)
     } else if (!stayVisible) {
