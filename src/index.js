@@ -1,6 +1,15 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react'
 import PropTypes from 'prop-types'
 import styles from './styles.module.css'
+
+// function from https://stackoverflow.com/questions/33199959/how-to-detect-a-react-component-vs-a-react-element
+function isElement(element) {
+  return React.isValidElement(element)
+}
+// function from https://stackoverflow.com/questions/33199959/how-to-detect-a-react-component-vs-a-react-element
+function isDOMTypeElement(element) {
+  return isElement(element) && typeof element.type === 'string'
+}
 
 export const AppearingContainer = ({
   children,
@@ -13,15 +22,29 @@ export const AppearingContainer = ({
   delay = 0,
   containerPadding = 15
 }) => {
-  const appearingDiv = useRef()
-
+  const appearingRef = useRef()
+  const contentRef = useRef()
   const [visible, setVisible] = useState(false)
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
 
-  let contentWidth = parseInt(children.props.style.width.replace('px', ''))
-  let contentHeight = parseInt(children.props.style.height.replace('px', ''))
+  useLayoutEffect(() => {
+    if (contentRef.current) {
+      setDimensions({
+        width: contentRef.current.offsetWidth,
+        widthWithPadding: contentRef.current.offsetWidth + containerPadding,
+        height: contentRef.current.offsetHeight,
+        heightWithPadding: contentRef.current.offsetHeight + containerPadding
+      })
+    }
+  }, [contentRef])
 
-  let wrapperWidth = contentWidth + containerPadding
-  let wrapperHeight = contentHeight + containerPadding
+  const renderContent = () => {
+    if (isDOMTypeElement(children)) {
+      return React.cloneElement(children, { ref: contentRef })
+    } else {
+      return React.cloneElement(children, { inputRef: contentRef })
+    }
+  }
 
   useEffect(() => {
     window.addEventListener('scroll', isVisible)
@@ -30,7 +53,7 @@ export const AppearingContainer = ({
   }, [])
 
   const isVisible = () => {
-    const rect = appearingDiv.current.getBoundingClientRect()
+    const rect = appearingRef.current.getBoundingClientRect()
 
     if (
       rect.bottom <=
@@ -44,8 +67,8 @@ export const AppearingContainer = ({
 
   return (
     <div
-      ref={appearingDiv}
-      className={`${styles.appearingDiv} `}
+      ref={appearingRef}
+      className={`${styles['appearingDiv']} `}
       style={{
         ...parentStyling,
 
@@ -54,45 +77,45 @@ export const AppearingContainer = ({
         width: parentStyling
           ? parentStyling.width
             ? parentStyling.width
-            : wrapperWidth + 'px'
-          : wrapperWidth + 'px',
+            : dimensions.widthWithPadding + 'px'
+          : dimensions.widthWithPadding + 'px',
         height: parentStyling
           ? parentStyling.height
             ? parentStyling.height
-            : wrapperHeight + 'px'
-          : wrapperHeight + 'px'
+            : dimensions.heightWithPadding + 'px'
+          : dimensions.heightWithPadding + 'px'
       }}
     >
       <div
         className={`${styles['contentWrapper']} ${styles[transitionType]} `}
         style={{
           ...wrapperStyling,
-
           transitionDelay: `${delay}ms`,
-
+          width: dimensions.widthWithPadding + 'px',
+          height: dimensions.heightWithPadding + 'px',
           left:
             animationType === 'fromLeft'
               ? visible
                 ? '0px'
-                : `-${contentWidth + containerPadding}px`
+                : `-${dimensions.widthWithPadding}px`
               : 'auto',
           right:
             animationType === 'fromRight'
               ? visible
                 ? '0px'
-                : `-${contentWidth + containerPadding}px`
+                : `-${dimensions.widthWithPadding}px`
               : 'auto',
           top:
             animationType === 'fromTop'
               ? visible
                 ? '0px'
-                : `-${contentHeight + containerPadding}px`
+                : `-${dimensions.heightWithPadding}px`
               : 'auto',
           bottom:
             animationType === 'fromBottom'
               ? visible
                 ? '0px'
-                : `-${contentHeight + containerPadding}px`
+                : `-${dimensions.heightWithPadding}px`
               : 'auto',
           transform:
             animationType === 'scale'
@@ -102,7 +125,7 @@ export const AppearingContainer = ({
               : 'auto'
         }}
       >
-        {children}
+        {renderContent()}
       </div>
     </div>
   )

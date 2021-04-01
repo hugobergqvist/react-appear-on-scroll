@@ -16,9 +16,7 @@ Examples can be seen [here](https://hugobergqvist.github.io/react-appear-on-scro
 
 ## Requirements
 
-`<AppearingContainer/>` requires a single child element which has both height and width set.
-
-I'm still trying to find a way to work around this, letting the AppearingContainer take both height and width of it's child component without having to explicitly set them.
+If you wrap a React Class Component or Functional Component with the `<AppearingContainer/>` you have to pass an `inputRef` prop to it's child (See example below)
 
 ## Usage
 
@@ -32,6 +30,7 @@ import {
 } from 'react-appear-on-scroll'
 import 'react-appear-on-scroll/dist/index.css'
 
+// Wrapping a regular element
 class Example extends Component {
   render() {
     return (
@@ -49,6 +48,31 @@ class Example extends Component {
   }
 }
 
+//Wrapping a React Functional Component
+const TestComponent = ({ inputRef }) => {
+  return (
+    <div ref={inputRef}>
+      <p>Hello!</p>
+    </div>
+  )
+}
+
+class Example extends Component {
+  render() {
+    return (
+      <AppearingContainer
+        animationType='fromLeft'
+        transitionType='bouncy'
+        fading
+        stayVisible
+      >
+        <TestComponent />
+      </AppearingContainer>
+    )
+  }
+}
+
+// Using the AppearSequentialContainer
 class Example2 extends Component {
   render() {
     return (

@@ -6,6 +6,26 @@ import {
 } from 'react-appear-on-scroll'
 import 'react-appear-on-scroll/dist/index.css'
 
+const TestComponent = ({ inputRef }) => {
+  return (
+    <div
+      ref={inputRef}
+      style={{
+        borderRadius: '4px',
+        backgroundColor: 'lightGrey',
+        flexDirection: 'column',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        boxShadow:
+          '0 1px 1px rgba(0,0,0,0.12), 0 2px 2px rgba(0,0,0,0.12), 0 4px 4px rgba(0,0,0,0.12)'
+      }}
+    >
+      <p>Hello!</p>
+    </div>
+  )
+}
+
 const contentStyling = {
   width: '250px',
   height: '200px',
@@ -63,6 +83,10 @@ const App = () => {
           <div className='arrow down' />
         </div>
       </div>
+      <AppearingContainer animationType='fromLeft' transitionType='ease'>
+        <TestComponent />
+      </AppearingContainer>
+
       <span style={spanStyling}>
         <AppearingContainer animationType='fromLeft' transitionType='ease'>
           <div style={{ ...contentStyling, backgroundColor: '#4cc9f0' }}>
