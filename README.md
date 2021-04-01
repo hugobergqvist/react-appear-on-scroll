@@ -24,6 +24,7 @@ I'm still trying to find a way to work around this, letting the AppearingContain
 
 ```jsx
 import React, { Component } from 'react'
+import 'react-appear-on-scroll/dist/index.css'
 
 import {
   AppearingContainer,
