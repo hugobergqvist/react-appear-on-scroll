@@ -64,15 +64,10 @@ const App = () => {
         </div>
       </div>
       <span style={spanStyling}>
-        <AppearingContainer
-          animationType='fromLeft'
-          transitionType='ease'
-          fading
-        >
+        <AppearingContainer animationType='fromLeft' transitionType='ease'>
           <div style={{ ...contentStyling, backgroundColor: '#4cc9f0' }}>
             <p style={textStyling}>animationType: fromLeft</p>
             <p style={textStyling}>transitionType: ease</p>
-            <p style={textStyling}>fading: true</p>
           </div>
         </AppearingContainer>
         <AppearingContainer

@@ -18,6 +18,8 @@ Examples can be seen [here](https://hugobergqvist.github.io/react-appear-on-scro
 
 `<AppearingContainer/>` requires a single child element which has both height and width set.
 
+I'm still trying to find a way to work around this, letting the AppearingContainer take both height and width of it's child component without having to explicitly set them.
+
 ## Usage
 
 ```jsx
