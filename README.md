@@ -117,16 +117,17 @@ class Example2 extends Component {
 
 ### AppearingContainer
 
-| Prop             | Type:  |  Default   |                                 Value                                 |
-| ---------------- | :----: | :--------: | :-------------------------------------------------------------------: |
-| parentStyling    | object |    none    |        Custom styling which is applied to the parent container        |
-| wrapperStyling   | object |    none    |        Custom styling which is applied to the content wrapper         |
-| delay            | number |    none    |     Adds transition-delay, utilized by AppearSequentialContainer      |
-| transitionType   | string |   'ease'   |                  One of 'ease', 'smooth' or 'bouncy'                  |
-| fading           |  bool  |   false    |           if true transitions opacity from 0 to 1 over 0.5s           |
-| stayVisible      |  bool  |   false    |           if true transitions once and is then left visible           |
-| animationType    | string | 'fromLeft' |  One of 'fromLeft', 'fromRight', 'fromTop', 'fromBottom' or 'scale'   |
-| containerPadding | number |     15     | Adds padding to the parent container, necessary if box-shadow is used |
+| Prop                      | Type:  |  Default   |                                                           Value                                                            |
+| ------------------------- | :----: | :--------: | :------------------------------------------------------------------------------------------------------------------------: |
+| parentStyling             | object |    none    |                                  Custom styling which is applied to the parent container                                   |
+| wrapperStyling            | object |    none    |                                   Custom styling which is applied to the content wrapper                                   |
+| delay                     | number |    none    |                                Adds transition-delay, utilized by AppearSequentialContainer                                |
+| transitionType            | string |   'ease'   |                                            One of 'ease', 'smooth' or 'bouncy'                                             |
+| fading                    |  bool  |   false    |                                     if true: transitions opacity from 0 to 1 over 0.5s                                     |
+| stayVisible               |  bool  |   false    |                                     if true: transitions once and is then left visible                                     |
+| requireFullHeightToRender |  bool  |   false    | if true: does not render until entire element is visible in the viewport, else it renders when half the element is visible |
+| animationType             | string | 'fromLeft' |                             One of 'fromLeft', 'fromRight', 'fromTop', 'fromBottom' or 'scale'                             |
+| containerPadding          | number |     15     |                           Adds padding to the parent container, necessary if box-shadow is used                            |
 
 ### AppearSequentialContainer
 

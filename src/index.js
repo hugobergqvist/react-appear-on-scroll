@@ -20,7 +20,8 @@ export const AppearingContainer = ({
   fading = false,
   stayVisible = false,
   delay = 0,
-  containerPadding = 15
+  containerPadding = 15,
+  requireFullHeightToRender = false
 }) => {
   const appearingRef = useRef()
   const contentRef = useRef()
@@ -54,12 +55,14 @@ export const AppearingContainer = ({
 
   const isVisible = () => {
     const rect = appearingRef.current.getBoundingClientRect()
+    let windowHeight =
+      window.innerHeight || document.documentElement.clientHeight
+    const bottomThreshold = requireFullHeightToRender
+      ? windowHeight
+      : windowHeight + rect.height / 2
+    const topThreshold = requireFullHeightToRender ? 0 : -rect.height / 2
 
-    if (
-      rect.top >= -rect.height &&
-      rect.bottom <=
-        (window.innerHeight || document.documentElement.clientHeight)
-    ) {
+    if (rect.top >= topThreshold && rect.bottom <= bottomThreshold) {
       setVisible(true)
     } else if (!stayVisible) {
       setVisible(false)
@@ -187,6 +190,7 @@ AppearingContainer.propTypes = {
   transitionType: PropTypes.oneOf(['ease', 'bouncy', 'smooth']),
   fading: PropTypes.bool,
   stayVisible: PropTypes.bool,
+  requireFullHeightToRender: PropTypes.bool,
   animationType: PropTypes.oneOf([
     'fromLeft',
     'fromRight',
